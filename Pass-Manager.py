@@ -124,10 +124,9 @@ def config():
 
                     return
                 else:
-                    messagebox.showerror(title="Status", message="Password should be atleast 8 characters !")
+                    messagebox.showinfo(title="Status", message="Password should be atleast 8 characters !")
             else:
                 messagebox.showerror(title="Status", message="Fill the entry first !")
-                sys.exit(1)
 
         sbt_button = Button(master=signup_frame, text="Sign Up", font=password_text_style, bg="#00FF00", fg="black",
                             command=Value)
