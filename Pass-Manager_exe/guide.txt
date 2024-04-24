@@ -1,0 +1,20 @@
+STEPS TO CREATE SHORTCUT TO DESKTOP:----->
+
+
+    1. Copy this folder(Pass-Manager_exe)
+
+    2. Paste to the Desktop
+
+    3. Right-click on desktop and click on (NEW)
+
+    4. Now create a shortcut & Browse to the [Pass-Manager_exe/Pass-Manager.exe] folder on desktop
+
+    5. Click on (ok) and (next) then (finish). 
+
+
+
+
+!! Warning --> DON'T DELETE ANY DIRECTORIES/FOLDERS !!!
+
+
+Author: White$Devil(v1n4y)

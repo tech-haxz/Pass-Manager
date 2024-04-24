@@ -14,7 +14,7 @@ def gen_secret(length=10):
 
 def config():
     import GUI.login as lg
-    os.chdir("D:\\Pass-Manager")
+    os.chdir("C:\\Pass-Manager")
     dir_list = os.listdir()
 
     if "passm.db" not in dir_list:
