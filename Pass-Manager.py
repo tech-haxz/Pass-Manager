@@ -74,54 +74,57 @@ def config():
                 lg.login()
 
             if mp_pass != "":
-                db = dbconfig()
-                cursor = db.cursor()
+                if len(mp_pass) >= 8:
+                    db = dbconfig()
+                    cursor = db.cursor()
 
-                printc("[green][+] Creating new config.. [/green]")
+                    printc("[green][+] Creating new config.. [/green]")
 
-                printc("[green][+] Database passm.db Created Successfully [/green]")
+                    printc("[green][+] Database passm.db Created Successfully [/green]")
 
-                # Creating Table
+                    # Creating Table
 
-                query = "CREATE TABLE IF NOT EXISTS secrets \
-                            (masterkey_hash TEXT NOT NULL, device_secret TEXT NOT NULL)"
+                    query = "CREATE TABLE IF NOT EXISTS secrets \
+                                (masterkey_hash TEXT NOT NULL, device_secret TEXT NOT NULL)"
 
-                res = cursor.execute(query)
-                printc("[green][+][/green] Table 'secret' Created")
+                    res = cursor.execute(query)
+                    printc("[green][+][/green] Table 'secret' Created")
 
-                query2 = "CREATE TABLE IF NOT EXISTS entries \
-                            (sitename TEXT NOT NULL, url TEXT NOT NULL, email TEXT, username TEXT, password TEXT NOT NULL)"
+                    query2 = "CREATE TABLE IF NOT EXISTS entries \
+                                (sitename TEXT NOT NULL, url TEXT NOT NULL, email TEXT, username TEXT, password TEXT NOT NULL)"
 
-                res = cursor.execute(query2)
-                printc("[green][+][/green] Table 'entries' Created")
-                ###############################################################################
-                master_pass = str(entry.get())
-                hashed_mpass = hashlib.sha256(master_pass.encode()).hexdigest()
-                printc("[green][+][/green] Generated hash of MASTER PASSWORD")
+                    res = cursor.execute(query2)
+                    printc("[green][+][/green] Table 'entries' Created")
+                    ###############################################################################
+                    master_pass = str(entry.get())
+                    hashed_mpass = hashlib.sha256(master_pass.encode()).hexdigest()
+                    printc("[green][+][/green] Generated hash of MASTER PASSWORD")
 
-                # Generate device secret
+                    # Generate device secret
 
-                dev_sec = gen_secret()
-                printc("[green][+][/green] Device Secret generated")
-                # print(dev_sec)
+                    dev_sec = gen_secret()
+                    printc("[green][+][/green] Device Secret generated")
+                    # print(dev_sec)
 
-                # Adding to databse
-                query = f"INSERT INTO secrets \
-                            (masterkey_hash, device_secret) \
-                                VALUES \
-                                ('{hashed_mpass}', '{dev_sec}')"
+                    # Adding to databse
+                    query = f"INSERT INTO secrets \
+                                (masterkey_hash, device_secret) \
+                                    VALUES \
+                                    ('{hashed_mpass}', '{dev_sec}')"
 
-                cursor.execute(query)
+                    cursor.execute(query)
 
-                db.commit()
+                    db.commit()
 
-                printc("[green][+][/green] Added to database")
-                printc("[green][+] Configuration Done [/green]")
+                    printc("[green][+][/green] Added to database")
+                    printc("[green][+] Configuration Done [/green]")
 
-                db.close()
-                dst_win()
+                    db.close()
+                    dst_win()
 
-                return
+                    return
+                else:
+                    messagebox.showerror(title="Status", message="Password should be atleast 8 characters !")
             else:
                 messagebox.showerror(title="Status", message="Fill the entry first !")
                 sys.exit(1)
