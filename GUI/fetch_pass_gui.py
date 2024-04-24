@@ -25,7 +25,7 @@ def fetch_pass():
 
     window = Tk()
     window.title("Pass-Manager(Retrieved Pass)")
-    window.geometry("1010x460")
+    window.geometry("1010x500")
     window.config(background="#1c2729")
     window.after(1, lambda: window.focus_force())
     window.resizable(width=False, height=False)
@@ -44,6 +44,9 @@ def fetch_pass():
 
     back_btn = Button(master=window, text="Back", image=back_btn01, bd=1, relief="raised", command=back, compound="top", bg="#1c2729", fg="white", activeforeground="white", activebackground="#1c2729")
     back_btn.pack(anchor="nw")
+
+    label = Label(master=window, text="Fetched Credentials", font=("Comic Sans Ms", 30, "bold"), bg="#1c2729", fg="#00FF00")
+    label.pack()
 
     table = ttk.Treeview(master=window, columns=("Sitenames", "Urls", "Emails", "Usernames", "Passwords"),
                          show="headings")

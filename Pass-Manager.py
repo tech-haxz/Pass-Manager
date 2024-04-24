@@ -1,5 +1,6 @@
 import sys
 import os
+import re
 import hashlib
 import random
 import string
@@ -66,6 +67,15 @@ def config():
         entry.focus_set()
         entry.pack(pady=15)
 
+        def validate_password(password):
+            # At least 8 characters
+            # At least one uppercase letter
+            # At least one lowercase letter
+            # At least one digit
+            # At least one special character among !@#$%^&*()_+|~-=`{}[]:;<>?,./
+            regex = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+            return re.match(regex, password) is not None
+
         def Value():
             mp_pass = str(entry.get())
 
@@ -74,7 +84,7 @@ def config():
                 lg.login()
 
             if mp_pass != "":
-                if len(mp_pass) >= 8:
+                if validate_password(mp_pass):
                     db = dbconfig()
                     cursor = db.cursor()
 
@@ -124,7 +134,12 @@ def config():
 
                     return
                 else:
-                    messagebox.showinfo(title="Status", message="Password should be atleast 8 characters !")
+                    messagebox.showinfo(title="Status", message="""Password should be: \n
+At least 8 characters.
+At least one uppercase letter.
+At least one lowercase letter.
+At least one digit.
+At least one special character.""")
             else:
                 messagebox.showerror(title="Status", message="Fill the entry first !")
 

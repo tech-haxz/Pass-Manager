@@ -17,7 +17,7 @@ def login():
         y = (screen_height // 2) - (height // 2)
         root.geometry(f'{width}x{height}+{x}+{y}')
 
-    
+
     window = Tk()
     window.geometry("700x400")
     window.title("Password-Manager(Login)")
@@ -42,15 +42,17 @@ def login():
 
             # print(mp_hashed)
             # print(result[1])  # Printing device secret key
+
             if mp_hashed != result[0]:
                 printc("[red][!] Wrong master key [/red]")
                 messagebox.showerror(title="Warning", message="Wrong master key !")
                 sys.exit(0)
-            window.destroy()
-            menu()
+            else:
+                window.destroy()
+                menu()
         else:
             messagebox.showwarning(title="Warning", message="Fill the entry !")
-            sys.exit(1)
+            # sys.exit(1)
 ##########################################################################################
     #Creating a Label
     label = Label(master=window, text="Login", font=("Comic Sans Ms", 50, "bold"), bg=background, fg="#00FF00")
