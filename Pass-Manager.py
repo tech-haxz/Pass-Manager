@@ -76,7 +76,7 @@ def config():
             regex = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
             return re.match(regex, password) is not None
 
-        def Value():
+        def Value(e=None):
             mp_pass = str(entry.get())
 
             def dst_win():
@@ -146,6 +146,8 @@ At least one special character.""")
         sbt_button = Button(master=signup_frame, text="Sign Up", font=password_text_style, bg="#00FF00", fg="black",
                             command=Value)
         sbt_button.pack()
+
+        root.bind('<Return>', Value)
 
         # mainloop of the frame
         signup_frame.mainloop()

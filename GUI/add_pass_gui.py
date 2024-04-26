@@ -61,7 +61,7 @@ def add_pass_gui():
 
         return key
 
-    def addEntry():
+    def addEntry(e=None):
         mpass = mp_ds()[0]
         dev_sec = mp_ds()[1]
         password = passwd.get()
@@ -165,6 +165,8 @@ def add_pass_gui():
     #Creating a Button
     btn = Button(master=cred_frame, text="Submit", bg="#00FF00", font=("Comic Sans Ms", 15, "bold"), command=addEntry)
     btn.pack(pady=10)
+
+    window.bind('<Return>', addEntry)
 
     cred_frame.mainloop()
 

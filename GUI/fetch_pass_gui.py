@@ -101,7 +101,7 @@ def fetch_pass():
 
         return key
 
-    def copy_passwd():
+    def copy_passwd(e=None):
         if copy_pass.get() != "":
             try:
                 db = dbconfig()
@@ -138,6 +138,8 @@ def fetch_pass():
     btn = Button(master=window, text="Copy Password", font=("Comic Sans Ms", 15, "bold"), bg="#00FF00",
                  command=copy_passwd)
     btn.pack(pady=20)
+
+    window.bind('<Return>', copy_passwd)
 
     window.mainloop()
 

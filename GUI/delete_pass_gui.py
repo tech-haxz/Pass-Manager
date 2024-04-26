@@ -51,7 +51,7 @@ def delete():
     Entry_box.pack()
 
     #Function to delete data row from database.
-    def Delete_entry():
+    def Delete_entry(e=None):
         sitename = Entry_box.get()
         if sitename != "":
             try:
@@ -90,6 +90,8 @@ def delete():
 
     dlt_btn = Button(master=window, text="Delete Entry", font=("Comic Sans Ms", 15, "bold"), bg="#00FF00", command=Delete_entry)
     dlt_btn.pack(pady=20)
+
+    window.bind('<Return>', Delete_entry)
 
 
     window.mainloop()

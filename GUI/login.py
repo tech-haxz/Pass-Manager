@@ -29,7 +29,7 @@ def login():
     window.iconphoto(False, icon)
     center_window(window)
 
-    def l_details():
+    def l_details(e=None):
         mp= str(entry.get())
         if mp != "":
             mp_hashed = hashlib.sha256(mp.encode()).hexdigest()
@@ -68,6 +68,8 @@ def login():
     #Login Button
     login_btn = Button(master=window, text="Submit", font=("Comic Sans Ms", 15, "bold"), bg="#00FF00", command=l_details)
     login_btn.pack(pady=20)
+
+    window.bind('<Return>', l_details)
     window.mainloop()
 
     # return l_details()
